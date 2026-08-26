@@ -10,6 +10,7 @@ class TestCase extends BaseTestCase
     {
         return [
             \Inertia\ServiceProvider::class,
+            \Spaseossr\UnifiedApi\ServiceProvider::class,
         ];
     }
 
