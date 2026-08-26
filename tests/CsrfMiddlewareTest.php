@@ -2,7 +2,10 @@
 
 namespace Spaseossr\UnifiedApi\Tests;
 
+use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mockery;
 use Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
 
 class CsrfMiddlewareTest extends TestCase
@@ -14,16 +17,64 @@ class CsrfMiddlewareTest extends TestCase
         });
     }
 
-    public function test_browser_post_without_csrf_token_is_rejected(): void
-    {
-        $this->post('/secure', [], ['Accept' => 'text/html'])
-            ->assertStatus(419);
-    }
-
     public function test_unified_client_post_bypasses_csrf(): void
     {
         $this->post('/secure', [], ['Accept' => 'application/json'])
             ->assertOk()
             ->assertJsonPath('ok', true);
+    }
+
+    public function test_browser_requests_delegate_to_native_csrf_middleware(): void
+    {
+        $native = Mockery::mock(ValidateCsrfToken::class);
+        $native->shouldReceive('handle')->once()->andReturnUsing(fn ($request, $next) => $next($request));
+        $this->app->instance(ValidateCsrfToken::class, $native);
+
+        $called = false;
+        $response = (new ValidateCsrfTokenExceptApiClients())->handle(
+            $this->browserRequest(),
+            function () use (&$called) {
+                $called = true;
+
+                return response('ok');
+            }
+        );
+
+        $this->assertTrue($called);
+        $this->assertSame('ok', $response->getContent());
+    }
+
+    public function test_unified_requests_do_not_invoke_native_csrf_middleware(): void
+    {
+        $native = Mockery::mock(ValidateCsrfToken::class);
+        $native->shouldNotReceive('handle');
+        $this->app->instance(ValidateCsrfToken::class, $native);
+
+        $response = (new ValidateCsrfTokenExceptApiClients())->handle(
+            $this->apiRequest(),
+            fn () => response('through')
+        );
+
+        $this->assertSame('through', $response->getContent());
+    }
+
+    protected function browserRequest(): Request
+    {
+        return Request::create('/secure', 'POST', [], [], [], [
+            'HTTP_ACCEPT' => 'text/html,application/xhtml+xml',
+        ]);
+    }
+
+    protected function apiRequest(): Request
+    {
+        return Request::create('/secure', 'POST', [], [], [], [
+            'HTTP_ACCEPT' => 'application/json',
+        ]);
+    }
+
+    protected function tearDown(): void
+    {
+        Mockery::close();
+        parent::tearDown();
     }
 }
