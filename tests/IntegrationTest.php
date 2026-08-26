@@ -51,6 +51,15 @@ class IntegrationTest extends TestCase
 
     public function test_csrf_middleware_alias_is_registered(): void
     {
-        $this->markTestSkipped('Enabled in Task 8 when the CSRF middleware class exists.');
+        $middleware = app('router')->getMiddleware();
+
+        $this->assertContains(
+            \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
+            $middleware
+        );
+        $this->assertSame(
+            \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
+            $middleware['unified.csrf'] ?? null
+        );
     }
 }

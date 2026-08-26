@@ -32,8 +32,10 @@ class ServiceProvider extends BaseServiceProvider
             }
         });
 
-        // Enabled in Task 8 once the middleware class exists:
-        // $this->app['router']->aliasMiddleware('unified.csrf', Middleware\ValidateCsrfTokenExceptApiClients::class);
+        $this->app['router']->aliasMiddleware(
+            'unified.csrf',
+            Middleware\ValidateCsrfTokenExceptApiClients::class
+        );
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
