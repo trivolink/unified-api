@@ -4,6 +4,7 @@ namespace Spaseossr\UnifiedApi;
 
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
 use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Inertia\ResponseFactory as InertiaResponseFactory;
 use Spaseossr\UnifiedApi\Middleware\TransformRedirectsForApiClients;
@@ -24,7 +25,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/unified-api.php', 'unified-api');
     }
 
-    public function boot(): void
+    public function boot(Router $router): void
     {
         $this->callAfterResolving(HttpKernelContract::class, function ($kernel) {
             if ($kernel instanceof Kernel) {
@@ -32,7 +33,7 @@ class ServiceProvider extends BaseServiceProvider
             }
         });
 
-        $this->app['router']->aliasMiddleware(
+        $router->aliasMiddleware(
             'unified.csrf',
             Middleware\ValidateCsrfTokenExceptApiClients::class
         );
