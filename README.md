@@ -193,3 +193,6 @@ composer install
 composer test      # phpunit
 composer lint      # pint
 ```
+
+Before tagging a release, follow [docs/PUBLISHING.md](docs/PUBLISHING.md)
+(license, metadata, lock handling, CI, Packagist).
