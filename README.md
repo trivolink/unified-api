@@ -4,6 +4,10 @@ One Laravel backend, three clients. Web keeps Inertia SSR HTML (SPA +
 SEO); mobile and desktop apps receive a standardized JSON envelope —
 from the same URLs and the same controllers.
 
+New here and deciding? Read [docs/ANALYSIS.md](docs/ANALYSIS.md) — the
+problem, the alternatives compared, honest trade-offs, and when this
+package is the wrong tool.
+
 ## Response matrix
 
 | Request | Response |
