@@ -3,6 +3,7 @@
 namespace Spaseossr\UnifiedApi\Middleware;
 
 use Closure;
+use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Http\Request;
@@ -27,11 +28,16 @@ class ValidateCsrfTokenExceptApiClients
     }
 
     /**
-     * Laravel 12+ renamed VerifyCsrfToken to ValidateCsrfToken;
-     * support both across the supported framework range.
+     * The framework's CSRF middleware for the installed Laravel version:
+     * PreventRequestForgery on Laravel 13+, ValidateCsrfToken on 11-12,
+     * VerifyCsrfToken on legacy versions.
      */
     public static function csrfMiddleware(): string
     {
+        if (class_exists(PreventRequestForgery::class)) {
+            return PreventRequestForgery::class;
+        }
+
         return class_exists(ValidateCsrfToken::class)
             ? ValidateCsrfToken::class
             : VerifyCsrfToken::class;

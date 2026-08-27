@@ -2,7 +2,6 @@
 
 namespace Spaseossr\UnifiedApi\Tests;
 
-use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mockery;
@@ -26,12 +25,12 @@ class CsrfMiddlewareTest extends TestCase
 
     public function test_browser_requests_delegate_to_native_csrf_middleware(): void
     {
-        $native = Mockery::mock(ValidateCsrfToken::class);
+        $native = Mockery::mock(ValidateCsrfTokenExceptApiClients::csrfMiddleware());
         $native->shouldReceive('handle')->once()->andReturnUsing(fn ($request, $next) => $next($request));
-        $this->app->instance(ValidateCsrfToken::class, $native);
+        $this->app->instance(ValidateCsrfTokenExceptApiClients::csrfMiddleware(), $native);
 
         $called = false;
-        $response = (new ValidateCsrfTokenExceptApiClients())->handle(
+        $response = (new ValidateCsrfTokenExceptApiClients)->handle(
             $this->browserRequest(),
             function () use (&$called) {
                 $called = true;
@@ -46,11 +45,11 @@ class CsrfMiddlewareTest extends TestCase
 
     public function test_unified_requests_do_not_invoke_native_csrf_middleware(): void
     {
-        $native = Mockery::mock(ValidateCsrfToken::class);
+        $native = Mockery::mock(ValidateCsrfTokenExceptApiClients::csrfMiddleware());
         $native->shouldNotReceive('handle');
-        $this->app->instance(ValidateCsrfToken::class, $native);
+        $this->app->instance(ValidateCsrfTokenExceptApiClients::csrfMiddleware(), $native);
 
-        $response = (new ValidateCsrfTokenExceptApiClients())->handle(
+        $response = (new ValidateCsrfTokenExceptApiClients)->handle(
             $this->apiRequest(),
             fn () => response('through')
         );

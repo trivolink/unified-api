@@ -72,10 +72,13 @@ swap the framework middleware in `bootstrap/app.php`:
     $middleware->validateCsrfTokens(except: [
         // ... your existing exceptions
     ]);
-    $middleware->replace(
-        \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+    // Laravel 13+ (the web group ships PreventRequestForgery):
+    $middleware->replaceInGroup(
+        'web',
+        \Illuminate\Foundation\Http\Middleware\PreventRequestForgery::class,
         \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
     );
+    // On Laravel 11-12, target ValidateCsrfToken::class instead.
 })
 ```
 
