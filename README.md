@@ -1,5 +1,9 @@
 # spaseossr/unified-api
 
+[![Tests](https://github.com/spaseossr/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/spaseossr/unified-api/actions/workflows/tests.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/spaseossr/unified-api)](https://packagist.org/packages/spaseossr/unified-api)
+[![License](https://img.shields.io/packagist/l/spaseossr/unified-api)](LICENSE)
+
 One Laravel backend, three clients. Web keeps Inertia SSR HTML (SPA +
 SEO); mobile and desktop apps receive a standardized JSON envelope —
 from the same URLs and the same controllers.

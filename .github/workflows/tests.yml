@@ -1,0 +1,37 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        php: ['8.2', '8.3', '8.4', '8.5']
+    name: PHP ${{ matrix.php }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      # Local-dev path repositories (../inertia-laravel-3.x) do not exist
+      # on CI. Drop them so dependencies resolve from Packagist — which is
+      # also what consumers install, so testing against it is the honest check.
+      - name: Remove local path repositories
+        run: composer config repositories --unset || true
+
+      - name: Install dependencies
+        run: composer update --no-interaction --no-progress
+
+      - name: Enforce code style
+        run: vendor/bin/pint --test
+
+      - name: Run tests
+        run: vendor/bin/phpunit
