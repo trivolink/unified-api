@@ -1,4 +1,4 @@
-# spaseossr/unified-api — What It Solves, Why, and How
+# firozanam/unified-api — What It Solves, Why, and How
 
 > One Laravel backend. Three clients — browser SPA, native mobile, native
 > desktop. Same URLs, same controllers, one versioned contract.
@@ -74,7 +74,7 @@ catches.
 
 ## 2. What the package is
 
-`spaseossr/unified-api` extends `inertiajs/inertia-laravel` so **one set of
+`firozanam/unified-api` extends `inertiajs/inertia-laravel` so **one set of
 URLs and controllers serves all three clients**, negotiated by the `Accept`
 header:
 
@@ -206,7 +206,7 @@ GET /dashboard
 ### Install
 
 ```bash
-composer require spaseossr/unified-api
+composer require firozanam/unified-api
 php artisan vendor:publish --tag=unified-api-config   # optional
 ```
 

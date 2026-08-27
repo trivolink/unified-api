@@ -4,16 +4,19 @@ Everything between "code is done" and "installable from Packagist", in
 execution order. Each section explains what to do, why, and gives the exact
 commands or file contents to use.
 
-> Steps 1–4 are **done** (commits `b5642e9` and `01ef859`): license under
-> "SPASEOSSR" (edit `LICENSE` + composer.json `authors` in one line each if
-> you prefer a personal name), CI adopted with a PHP 8.2–8.5 matrix. What
-> remains for the maintainer: step 5 (push + tag) and step 6 (Packagist).
+> Steps 1–4 are **done**: license under "firozanam" (edit `LICENSE` +
+> composer.json `authors` in one line each if you prefer a personal name),
+> CI adopted with a PHP 8.2–8.5 matrix, and the package is named
+> `firozanam/unified-api` to match the GitHub account (the PHP namespace
+> stays `Spaseossr\UnifiedApi` — package name and namespace are
+> independent). What remains for the maintainer: step 5 (push + tag) and
+> step 6 (Packagist).
 
 ## Status
 
 | # | Item | Status | Blocks publishing? |
 |---|---|---|---|
-| 1 | `LICENSE` file | ✅ done — MIT, SPASEOSSR | — |
+| 1 | `LICENSE` file | ✅ done — MIT, firozanam | — |
 | 2 | composer.json `authors` / `keywords` / `support` | ✅ done | — |
 | 3 | `composer.lock` tracked in git | ✅ untracked + ignored | — |
 | 4 | CI workflow | ✅ `.github/workflows/tests.yml` | — |
@@ -180,8 +183,8 @@ git tag -a v1.0.0 -m "Initial stable release"
 git push origin v1.0.0
 ```
 
-The GitHub account is `firozanam`; the Packagist package name stays
-`spaseossr/unified-api` (the vendor namespace you publish under).
+The GitHub account and the Packagist vendor are both `firozanam`, so
+`composer require firozanam/unified-api` is the install command.
 
 Tagging is what lets Packagist pick up an installable version.
 
@@ -196,7 +199,7 @@ Tagging is what lets Packagist pick up an installable version.
    (Settings → GitHub Apps → Packagist), or add the legacy webhook
    (`https://packagist.org/api/github?username=<your-packagist-username>`).
 
-After this, `composer require spaseossr/unified-api` works worldwide.
+After this, `composer require firozanam/unified-api` works worldwide.
 
 ## 7. Optional polish
 
@@ -204,8 +207,8 @@ After this, `composer require spaseossr/unified-api` works worldwide.
 
 ```markdown
 [![Tests](https://github.com/firozanam/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/firozanam/unified-api/actions/workflows/tests.yml)
-[![Packagist Version](https://img.shields.io/packagist/v/spaseossr/unified-api)](https://packagist.org/packages/spaseossr/unified-api)
-[![License](https://img.shields.io/packagist/l/spaseossr/unified-api)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/firozanam/unified-api)](https://packagist.org/packages/firozanam/unified-api)
+[![License](https://img.shields.io/packagist/l/firozanam/unified-api)](LICENSE)
 ```
 
 **`.gitattributes`** — slim down what `composer require` downloads by

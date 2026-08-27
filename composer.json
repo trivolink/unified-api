@@ -1,5 +1,5 @@
 {
-    "name": "spaseossr/unified-api",
+    "name": "firozanam/unified-api",
     "description": "Unified JSON API contract for Inertia-powered Laravel backends — serve web, mobile and desktop clients from one set of routes.",
     "type": "library",
     "license": "MIT",
@@ -18,7 +18,7 @@
     ],
     "authors": [
         {
-            "name": "SPASEOSSR",
+            "name": "firozanam",
             "homepage": "https://github.com/firozanam"
         }
     ],

@@ -1,8 +1,8 @@
-# spaseossr/unified-api
+# firozanam/unified-api
 
 [![Tests](https://github.com/firozanam/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/firozanam/unified-api/actions/workflows/tests.yml)
-[![Packagist Version](https://img.shields.io/packagist/v/spaseossr/unified-api)](https://packagist.org/packages/spaseossr/unified-api)
-[![License](https://img.shields.io/packagist/l/spaseossr/unified-api)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/firozanam/unified-api)](https://packagist.org/packages/firozanam/unified-api)
+[![License](https://img.shields.io/packagist/l/firozanam/unified-api)](LICENSE)
 
 One Laravel backend, three clients. Web keeps Inertia SSR HTML (SPA +
 SEO); mobile and desktop apps receive a standardized JSON envelope —
@@ -44,7 +44,7 @@ throttle 429, server 5xx).
 ## Install
 
 ```bash
-composer require spaseossr/unified-api
+composer require firozanam/unified-api
 ```
 
 Publish config (optional):
