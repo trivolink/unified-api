@@ -45,7 +45,7 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/unified-api.php' => config_path('unified-api.php'),
-            ]);
+            ], 'unified-api-config');
         }
     }
 }
