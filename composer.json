@@ -1,5 +1,5 @@
 {
-    "name": "triviumlabs/unified-api",
+    "name": "trivolink/unified-api",
     "description": "Unified JSON API contract for Inertia-powered Laravel backends — serve web, mobile and desktop clients from one set of routes.",
     "type": "library",
     "license": "MIT",
@@ -19,13 +19,13 @@
     "authors": [
         {
             "name": "TrivoLink",
-            "homepage": "https://github.com/triviumlabs"
+            "homepage": "https://github.com/trivolink"
         }
     ],
-    "homepage": "https://github.com/triviumlabs/unified-api",
+    "homepage": "https://github.com/trivolink/unified-api",
     "support": {
-        "issues": "https://github.com/triviumlabs/unified-api/issues",
-        "source": "https://github.com/triviumlabs/unified-api"
+        "issues": "https://github.com/trivolink/unified-api/issues",
+        "source": "https://github.com/trivolink/unified-api"
     },
     "autoload": {
         "psr-4": {

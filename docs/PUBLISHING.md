@@ -7,7 +7,7 @@ commands or file contents to use.
 > Steps 1–4 are **done**: license under "TrivoLink" (edit `LICENSE` +
 > composer.json `authors` in one line each if you prefer a personal name),
 > CI adopted with a PHP 8.2–8.5 matrix, and the package is named
-> `triviumlabs/unified-api` to match the GitHub org (the PHP namespace
+> `trivolink/unified-api` to match the GitHub org (the PHP namespace
 > stays `TrivoLink\UnifiedApi` — package name and namespace are
 > independent). What remains for the maintainer: step 5 (push + tag) and
 > step 6 (Packagist).
@@ -85,10 +85,10 @@ query; `authors` is how Packagist attributes you as maintainer):
         "email": "<OPTIONAL EMAIL>"
     }
 ],
-"homepage": "https://github.com/triviumlabs/unified-api",
+"homepage": "https://github.com/trivolink/unified-api",
 "support": {
-    "issues": "https://github.com/triviumlabs/unified-api/issues",
-    "source": "https://github.com/triviumlabs/unified-api"
+    "issues": "https://github.com/trivolink/unified-api/issues",
+    "source": "https://github.com/trivolink/unified-api"
 }
 ```
 
@@ -174,22 +174,24 @@ Notes:
 
 ## 5. Push and tag the first release (manual — yours)
 
-Prerequisite: create the **`triviumlabs`** organization on GitHub first
-(<https://github.com/organizations/new>, plan: Free). The bare `trivium`
-name is taken on Packagist (vendor claimed by `trivium/api`), which is why
-the vendor carries the `-labs` suffix; both names are free as `triviumlabs`.
+Prerequisite: create the **`trivolink`** organization on GitHub first
+(<https://github.com/organizations/new>, plan: Free). Naming trail: the
+bare `trivium` vendor is taken on Packagist (claimed by `trivium/api`),
+and the obvious GitHub handles (`trivium`, `triviumlabs`) were unavailable
+or held — hence the coined handle `trivolink`, confirmed available in the
+GitHub org form and free on Packagist.
 
 ```bash
 # from the package root, after steps 1–4 are committed
-git remote add origin git@github.com:triviumlabs/unified-api.git
+git remote add origin git@github.com:trivolink/unified-api.git
 git push -u origin main
 
 git tag -a v1.0.0 -m "Initial stable release"
 git push origin v1.0.0
 ```
 
-The GitHub org and the Packagist vendor are both `triviumlabs`, so
-`composer require triviumlabs/unified-api` is the install command.
+The GitHub org and the Packagist vendor are both `trivolink`, so
+`composer require trivolink/unified-api` is the install command.
 
 Tagging is what lets Packagist pick up an installable version.
 
@@ -198,22 +200,22 @@ Tagging is what lets Packagist pick up an installable version.
 1. Create a Packagist account (sign in with GitHub) at
    <https://packagist.org>.
 2. Submit the package: <https://packagist.org/submit> → paste
-   `https://github.com/triviumlabs/unified-api`.
+   `https://github.com/trivolink/unified-api`.
 3. Enable auto-updates so future tags sync without manual work: install the
-   **Packagist GitHub App** on your `triviumlabs/unified-api` repository
+   **Packagist GitHub App** on your `trivolink/unified-api` repository
    (Settings → GitHub Apps → Packagist), or add the legacy webhook
    (`https://packagist.org/api/github?username=<your-packagist-username>`).
 
-After this, `composer require triviumlabs/unified-api` works worldwide.
+After this, `composer require trivolink/unified-api` works worldwide.
 
 ## 7. Optional polish
 
 **README badges** (top of `README.md`, after CI exists):
 
 ```markdown
-[![Tests](https://github.com/triviumlabs/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/triviumlabs/unified-api/actions/workflows/tests.yml)
-[![Packagist Version](https://img.shields.io/packagist/v/triviumlabs/unified-api)](https://packagist.org/packages/triviumlabs/unified-api)
-[![License](https://img.shields.io/packagist/l/triviumlabs/unified-api)](LICENSE)
+[![Tests](https://github.com/trivolink/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/trivolink/unified-api/actions/workflows/tests.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/trivolink/unified-api)](https://packagist.org/packages/trivolink/unified-api)
+[![License](https://img.shields.io/packagist/l/trivolink/unified-api)](LICENSE)
 ```
 
 **`.gitattributes`** — slim down what `composer require` downloads by

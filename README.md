@@ -1,8 +1,8 @@
-# triviumlabs/unified-api
+# trivolink/unified-api
 
-[![Tests](https://github.com/triviumlabs/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/triviumlabs/unified-api/actions/workflows/tests.yml)
-[![Packagist Version](https://img.shields.io/packagist/v/triviumlabs/unified-api)](https://packagist.org/packages/triviumlabs/unified-api)
-[![License](https://img.shields.io/packagist/l/triviumlabs/unified-api)](LICENSE)
+[![Tests](https://github.com/trivolink/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/trivolink/unified-api/actions/workflows/tests.yml)
+[![Packagist Version](https://img.shields.io/packagist/v/trivolink/unified-api)](https://packagist.org/packages/trivolink/unified-api)
+[![License](https://img.shields.io/packagist/l/trivolink/unified-api)](LICENSE)
 
 One Laravel backend, three clients. Web keeps Inertia SSR HTML (SPA +
 SEO); mobile and desktop apps receive a standardized JSON envelope —
@@ -44,7 +44,7 @@ throttle 429, server 5xx).
 ## Install
 
 ```bash
-composer require triviumlabs/unified-api
+composer require trivolink/unified-api
 ```
 
 Publish config (optional):
