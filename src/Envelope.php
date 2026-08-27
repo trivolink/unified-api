@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi;
+namespace TrivoLink\UnifiedApi;
 
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;

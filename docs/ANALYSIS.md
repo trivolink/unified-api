@@ -234,7 +234,7 @@ POST /api/token
 $middleware->replaceInGroup(
     'web',
     \Illuminate\Foundation\Http\Middleware\PreventRequestForgery::class, // Laravel 13+
-    \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
+    \TrivoLink\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
 );
 // On Laravel 11–12, target ValidateCsrfToken::class instead.
 ```

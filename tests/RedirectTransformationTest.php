@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi;
+namespace TrivoLink\UnifiedApi;
 
 use Inertia\PropsResolver;
 

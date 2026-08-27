@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Testing;
+namespace TrivoLink\UnifiedApi\Testing;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Testing\TestResponse;

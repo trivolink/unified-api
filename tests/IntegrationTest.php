@@ -1,12 +1,12 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Inertia\ResponseFactory;
-use Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
-use Spaseossr\UnifiedApi\UnifiedResponse;
-use Spaseossr\UnifiedApi\UnifiedResponseFactory;
+use TrivoLink\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
+use TrivoLink\UnifiedApi\UnifiedResponse;
+use TrivoLink\UnifiedApi\UnifiedResponseFactory;
 
 class IntegrationTest extends TestCase
 {

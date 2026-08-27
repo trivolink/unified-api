@@ -1,14 +1,14 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Middleware;
+namespace TrivoLink\UnifiedApi\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Spaseossr\UnifiedApi\ClientDetector;
-use Spaseossr\UnifiedApi\Envelope;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use TrivoLink\UnifiedApi\ClientDetector;
+use TrivoLink\UnifiedApi\Envelope;
 
 class TransformRedirectsForApiClients
 {

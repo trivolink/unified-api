@@ -1,9 +1,9 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Http\Request;
-use Spaseossr\UnifiedApi\Envelope;
+use TrivoLink\UnifiedApi\Envelope;
 
 class EnvelopeTest extends TestCase
 {

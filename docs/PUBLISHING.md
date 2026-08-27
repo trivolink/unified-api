@@ -8,7 +8,7 @@ commands or file contents to use.
 > composer.json `authors` in one line each if you prefer a personal name),
 > CI adopted with a PHP 8.2–8.5 matrix, and the package is named
 > `firozanam/unified-api` to match the GitHub account (the PHP namespace
-> stays `Spaseossr\UnifiedApi` — package name and namespace are
+> stays `TrivoLink\UnifiedApi` — package name and namespace are
 > independent). What remains for the maintainer: step 5 (push + tag) and
 > step 6 (Packagist).
 

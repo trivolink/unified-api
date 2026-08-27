@@ -1,14 +1,14 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Middleware;
+namespace TrivoLink\UnifiedApi\Middleware;
 
 use Closure;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Foundation\Http\Middleware\ValidateCsrfToken;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Http\Request;
-use Spaseossr\UnifiedApi\ClientDetector;
 use Symfony\Component\HttpFoundation\Response;
+use TrivoLink\UnifiedApi\ClientDetector;
 
 class ValidateCsrfTokenExceptApiClients
 {

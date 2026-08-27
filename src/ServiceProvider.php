@@ -1,13 +1,13 @@
 <?php
 
-namespace Spaseossr\UnifiedApi;
+namespace TrivoLink\UnifiedApi;
 
 use Illuminate\Contracts\Http\Kernel as HttpKernelContract;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Inertia\ResponseFactory as InertiaResponseFactory;
-use Spaseossr\UnifiedApi\Middleware\TransformRedirectsForApiClients;
+use TrivoLink\UnifiedApi\Middleware\TransformRedirectsForApiClients;
 
 class ServiceProvider extends BaseServiceProvider
 {

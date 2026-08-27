@@ -2,7 +2,7 @@
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Testing\TestResponse;
-use Spaseossr\UnifiedApi\Testing\EnvelopeSnapshot;
+use TrivoLink\UnifiedApi\Testing\EnvelopeSnapshot;
 
 if (! function_exists('envelopeSnapshot')) {
     /**

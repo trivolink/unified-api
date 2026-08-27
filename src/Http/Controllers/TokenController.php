@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Http\Controllers;
+namespace TrivoLink\UnifiedApi\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use LogicException;
-use Spaseossr\UnifiedApi\Envelope;
+use TrivoLink\UnifiedApi\Envelope;
 
 class TokenController
 {

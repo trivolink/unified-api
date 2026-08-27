@@ -1,9 +1,9 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
-use Spaseossr\UnifiedApi\Tests\Stubs\App\User as StubUser;
-use Spaseossr\UnifiedApi\Tests\Stubs\App\UserWithoutApiTokens;
+use TrivoLink\UnifiedApi\Tests\Stubs\App\User as StubUser;
+use TrivoLink\UnifiedApi\Tests\Stubs\App\UserWithoutApiTokens;
 
 class TokenEndpointTest extends TestCase
 {

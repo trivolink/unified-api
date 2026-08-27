@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Inertia\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
@@ -11,7 +11,7 @@ class TestCase extends BaseTestCase
     {
         return [
             ServiceProvider::class,
-            \Spaseossr\UnifiedApi\ServiceProvider::class,
+            \TrivoLink\UnifiedApi\ServiceProvider::class,
         ];
     }
 

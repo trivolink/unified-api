@@ -1,11 +1,11 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mockery;
-use Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
+use TrivoLink\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
 
 class CsrfMiddlewareTest extends TestCase
 {

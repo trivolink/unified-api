@@ -1,6 +1,6 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests\Stubs\App;
+namespace TrivoLink\UnifiedApi\Tests\Stubs\App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;

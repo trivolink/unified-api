@@ -1,10 +1,10 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Spaseossr\UnifiedApi\UnifiedResponse;
+use TrivoLink\UnifiedApi\UnifiedResponse;
 
 class UnifiedResponseTest extends TestCase
 {

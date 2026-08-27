@@ -1,11 +1,11 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\ExpectationFailedException;
-use Spaseossr\UnifiedApi\Testing\EnvelopeSnapshot;
+use TrivoLink\UnifiedApi\Testing\EnvelopeSnapshot;
 
 class EnvelopeSnapshotTest extends TestCase
 {

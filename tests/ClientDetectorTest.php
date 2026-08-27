@@ -1,9 +1,9 @@
 <?php
 
-namespace Spaseossr\UnifiedApi\Tests;
+namespace TrivoLink\UnifiedApi\Tests;
 
 use Illuminate\Http\Request;
-use Spaseossr\UnifiedApi\ClientDetector;
+use TrivoLink\UnifiedApi\ClientDetector;
 
 class ClientDetectorTest extends TestCase
 {
