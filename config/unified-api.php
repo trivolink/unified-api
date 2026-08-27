@@ -49,4 +49,21 @@ return [
 
     'redirect_status' => 200,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Token Endpoint
+    |--------------------------------------------------------------------------
+    | Mobile/desktop clients obtain their first Sanctum bearer token by
+    | exchanging email + password at this route. Keep it throttled.
+    | Requires the user model to use Laravel\Sanctum\HasApiTokens.
+    */
+
+    'token_endpoint' => [
+        'enabled' => env('UNIFIED_API_TOKEN_ENDPOINT', true),
+
+        'path' => env('UNIFIED_API_TOKEN_PATH', 'api/token'),
+
+        'middleware' => ['throttle:5,1'],
+    ],
+
 ];

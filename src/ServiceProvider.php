@@ -37,6 +37,10 @@ class ServiceProvider extends BaseServiceProvider
             Middleware\ValidateCsrfTokenExceptApiClients::class
         );
 
+        if (config('unified-api.token_endpoint.enabled', true)) {
+            $this->loadRoutesFrom(__DIR__.'/../routes/token.php');
+        }
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/unified-api.php' => config_path('unified-api.php'),
