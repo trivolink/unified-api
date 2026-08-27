@@ -2,11 +2,13 @@
 
 namespace Spaseossr\UnifiedApi\Tests;
 
+use Inertia\ServiceProvider;
+
 class ScaffoldTest extends TestCase
 {
     public function test_inertia_service_provider_is_loaded(): void
     {
-        $this->assertTrue(app()->providerIsLoaded(\Inertia\ServiceProvider::class));
+        $this->assertTrue(app()->providerIsLoaded(ServiceProvider::class));
     }
 
     public function test_root_view_stub_exists(): void

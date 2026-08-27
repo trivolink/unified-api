@@ -3,6 +3,8 @@
 namespace Spaseossr\UnifiedApi\Tests;
 
 use Illuminate\Support\Facades\Route;
+use Inertia\ResponseFactory;
+use Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients;
 use Spaseossr\UnifiedApi\UnifiedResponse;
 use Spaseossr\UnifiedApi\UnifiedResponseFactory;
 
@@ -12,7 +14,7 @@ class IntegrationTest extends TestCase
     {
         $this->assertInstanceOf(
             UnifiedResponseFactory::class,
-            app(\Inertia\ResponseFactory::class)
+            app(ResponseFactory::class)
         );
     }
 
@@ -54,11 +56,11 @@ class IntegrationTest extends TestCase
         $middleware = app('router')->getMiddleware();
 
         $this->assertContains(
-            \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
+            ValidateCsrfTokenExceptApiClients::class,
             $middleware
         );
         $this->assertSame(
-            \Spaseossr\UnifiedApi\Middleware\ValidateCsrfTokenExceptApiClients::class,
+            ValidateCsrfTokenExceptApiClients::class,
             $middleware['unified.csrf'] ?? null
         );
     }
