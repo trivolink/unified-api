@@ -6,7 +6,10 @@
     "autoload": {
         "psr-4": {
             "Spaseossr\\UnifiedApi\\": "src"
-        }
+        },
+        "files": [
+            "src/Testing/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
