@@ -1,4 +1,4 @@
-# firozanam/unified-api — What It Solves, Why, and How
+# triviumlabs/unified-api — What It Solves, Why, and How
 
 > One Laravel backend. Three clients — browser SPA, native mobile, native
 > desktop. Same URLs, same controllers, one versioned contract.
@@ -74,7 +74,7 @@ catches.
 
 ## 2. What the package is
 
-`firozanam/unified-api` extends `inertiajs/inertia-laravel` so **one set of
+`triviumlabs/unified-api` extends `inertiajs/inertia-laravel` so **one set of
 URLs and controllers serves all three clients**, negotiated by the `Accept`
 header:
 
@@ -206,7 +206,7 @@ GET /dashboard
 ### Install
 
 ```bash
-composer require firozanam/unified-api
+composer require triviumlabs/unified-api
 php artisan vendor:publish --tag=unified-api-config   # optional
 ```
 
