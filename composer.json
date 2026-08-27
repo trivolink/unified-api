@@ -19,13 +19,13 @@
     "authors": [
         {
             "name": "SPASEOSSR",
-            "homepage": "https://github.com/spaseossr"
+            "homepage": "https://github.com/firozanam"
         }
     ],
-    "homepage": "https://github.com/spaseossr/unified-api",
+    "homepage": "https://github.com/firozanam/unified-api",
     "support": {
-        "issues": "https://github.com/spaseossr/unified-api/issues",
-        "source": "https://github.com/spaseossr/unified-api"
+        "issues": "https://github.com/firozanam/unified-api/issues",
+        "source": "https://github.com/firozanam/unified-api"
     },
     "autoload": {
         "psr-4": {

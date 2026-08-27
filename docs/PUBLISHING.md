@@ -82,10 +82,10 @@ query; `authors` is how Packagist attributes you as maintainer):
         "email": "<OPTIONAL EMAIL>"
     }
 ],
-"homepage": "https://github.com/spaseossr/unified-api",
+"homepage": "https://github.com/firozanam/unified-api",
 "support": {
-    "issues": "https://github.com/spaseossr/unified-api/issues",
-    "source": "https://github.com/spaseossr/unified-api"
+    "issues": "https://github.com/firozanam/unified-api/issues",
+    "source": "https://github.com/firozanam/unified-api"
 }
 ```
 
@@ -173,12 +173,15 @@ Notes:
 
 ```bash
 # from the package root, after steps 1–4 are committed
-git remote add origin git@github.com:spaseossr/unified-api.git   # adjust if different
+git remote add origin git@github.com:firozanam/unified-api.git
 git push -u origin main
 
 git tag -a v1.0.0 -m "Initial stable release"
 git push origin v1.0.0
 ```
+
+The GitHub account is `firozanam`; the Packagist package name stays
+`spaseossr/unified-api` (the vendor namespace you publish under).
 
 Tagging is what lets Packagist pick up an installable version.
 
@@ -187,11 +190,11 @@ Tagging is what lets Packagist pick up an installable version.
 1. Create a Packagist account (sign in with GitHub) at
    <https://packagist.org>.
 2. Submit the package: <https://packagist.org/submit> → paste
-   `https://github.com/spaseossr/unified-api`.
+   `https://github.com/firozanam/unified-api`.
 3. Enable auto-updates so future tags sync without manual work: install the
-   **Packagist GitHub App** on your `spaseossr/unified-api` repository
+   **Packagist GitHub App** on your `firozanam/unified-api` repository
    (Settings → GitHub Apps → Packagist), or add the legacy webhook
-   (`https://packagist.org/api/github?username=spaseossr`).
+   (`https://packagist.org/api/github?username=<your-packagist-username>`).
 
 After this, `composer require spaseossr/unified-api` works worldwide.
 
@@ -200,7 +203,7 @@ After this, `composer require spaseossr/unified-api` works worldwide.
 **README badges** (top of `README.md`, after CI exists):
 
 ```markdown
-[![Tests](https://github.com/spaseossr/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/spaseossr/unified-api/actions/workflows/tests.yml)
+[![Tests](https://github.com/firozanam/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/firozanam/unified-api/actions/workflows/tests.yml)
 [![Packagist Version](https://img.shields.io/packagist/v/spaseossr/unified-api)](https://packagist.org/packages/spaseossr/unified-api)
 [![License](https://img.shields.io/packagist/l/spaseossr/unified-api)](LICENSE)
 ```
