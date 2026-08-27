@@ -148,6 +148,40 @@ $this->get('/dashboard', ['Accept' => 'application/json'])
     ->assertJsonPath('data.users', 5);
 ```
 
+## Contract testing
+
+The envelope's `data` is your resolved page props — for native clients,
+those props ARE the API. Freeze their **shape** with snapshot tests so a
+web refactor that renames, retypes or drops a prop fails CI instead of
+silently breaking shipped apps:
+
+```php
+use function envelopeSnapshot; // global helper, autoloaded
+
+test('dashboard envelope contract', function () {
+    $user = User::factory()->create();
+
+    envelopeSnapshot('dashboard', fn () => $this
+        ->actingAs($user)
+        ->get(route('dashboard'), ['Accept' => 'application/json']));
+});
+```
+
+The first run writes `tests/Snapshots/UnifiedApi/dashboard.json` (shape
+only — key tree plus JSON types; values never recorded, so factory data
+and timestamps cannot flake). Later runs compare. Non-2xx responses fail
+immediately: error envelopes are not contracts.
+
+When a snapshot diff appears in a PR, the change rule is two lines:
+
+- **additive** (new keys only) — regenerate: `ENVELOPE_SNAPSHOT_UPDATE=1 vendor/bin/pest`
+- **breaking** (remove/rename/retype) — bump `UNIFIED_API_VERSION`, update
+  consumers, and regenerate in the same commit
+
+Store the snapshot path override for unusual layouts with
+`EnvelopeSnapshot::usingSnapshotPath(...)`; the default is
+`base_path('tests/Snapshots/UnifiedApi')`.
+
 ## Development
 
 ```bash
