@@ -22,14 +22,16 @@ from the same URLs and the same controllers.
 ```
 
 - `data` — fully resolved page props (shared + page props, eager: deferred/optional props included)
-- `meta` — `component` (screen hint) and `url`, each disableable via `unified-api.meta.*`
+- `meta` — `component` (screen hint) and `url`, each disableable via `unified-api.meta.*`; always a JSON object, never an array
 - `message` — flashed `message` key when present, else `null`
 - `version` — API contract version (`UNIFIED_API_VERSION`, default `v1`)
 
 POST endpoints that redirect respond `200` (configurable) with
 `meta.redirect` instead of a 302/303, so native clients never silently
 follow redirects. Validation and HTTP errors keep their status code and
-arrive wrapped: `{data: null, message, errors?, version}`.
+arrive wrapped: `{data: null, message, errors?, version}` — including
+exception-rendered responses (401 unauthenticated, 404, validation 422,
+throttle 429, server 5xx).
 
 ## Install
 
@@ -61,6 +63,32 @@ personal access tokens to your mobile/desktop apps) and falls back to
 the web session for browsers — your existing Fortify/session flow keeps
 working untouched.
 
+### Getting a first token: `POST /api/token`
+
+Mobile/desktop clients bootstrap their bearer token with an email +
+password exchange (stateless, throttled to 5/min by default):
+
+```json
+POST /api/token
+{"email": "tania@example.com", "password": "...", "device_name": "iphone-15"}
+```
+
+```json
+{"data": {"token": "1|abc123..."}, "meta": {}, "message": null, "version": "v1"}
+```
+
+Wrong credentials get the 422 envelope with `errors.email`. The route
+requires the user model to use `Laravel\Sanctum\HasApiTokens` and can be
+configured or disabled under `unified-api.token_endpoint`:
+
+```php
+'token_endpoint' => [
+    'enabled' => env('UNIFIED_API_TOKEN_ENDPOINT', true),
+    'path' => env('UNIFIED_API_TOKEN_PATH', 'api/token'),
+    'middleware' => ['throttle:5,1'],
+],
+```
+
 ## CSRF
 
 Browser POSTs still require CSRF tokens (Inertia sends them
@@ -91,11 +119,12 @@ attacker to ride.
 ## Mobile/Desktop client checklist
 
 1. Send `Accept: application/json` on every request.
-2. Authenticate with `Authorization: Bearer <sanctum-token>`.
-3. Read `version`; when it differs from your compiled-in contract
+2. Bootstrap: `POST /api/token` with email + password, store `data.token`.
+3. Authenticate every request with `Authorization: Bearer <token>`.
+4. Read `version`; when it differs from your compiled-in contract
    (e.g. you shipped `v1`, server now sends `v2`), prompt the user to
    update.
-4. On `meta.redirect`, navigate explicitly — do not rely on HTTP
+5. On `meta.redirect`, navigate explicitly — do not rely on HTTP
    redirect following.
 
 ## Why not just send X-Inertia from mobile?
