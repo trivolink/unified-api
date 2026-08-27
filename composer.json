@@ -3,6 +3,30 @@
     "description": "Unified JSON API contract for Inertia-powered Laravel backends — serve web, mobile and desktop clients from one set of routes.",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "inertia",
+        "inertiajs",
+        "api",
+        "json",
+        "mobile",
+        "desktop",
+        "rest",
+        "content-negotiation",
+        "envelope",
+        "sanctum"
+    ],
+    "authors": [
+        {
+            "name": "SPASEOSSR",
+            "homepage": "https://github.com/spaseossr"
+        }
+    ],
+    "homepage": "https://github.com/spaseossr/unified-api",
+    "support": {
+        "issues": "https://github.com/spaseossr/unified-api/issues",
+        "source": "https://github.com/spaseossr/unified-api"
+    },
     "autoload": {
         "psr-4": {
             "Spaseossr\\UnifiedApi\\": "src"
