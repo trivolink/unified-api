@@ -48,7 +48,9 @@ class Envelope implements Responsable
     {
         $payload = [
             'data' => $this->data,
-            'meta' => $this->meta,
+            // meta must always decode as an object; a plain empty array
+            // would encode as [] and break clients that parse it as a map.
+            'meta' => $this->meta === [] ? new \stdClass : $this->meta,
             'message' => $this->message,
             'version' => (string) config('unified-api.version', 'v1'),
         ];

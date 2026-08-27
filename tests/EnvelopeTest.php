@@ -79,4 +79,15 @@ class EnvelopeTest extends TestCase
 
         $this->assertSame(303, $response->getStatusCode());
     }
+
+    public function test_empty_meta_encodes_as_json_object_not_array(): void
+    {
+        $content = Envelope::error('Unauthenticated.', status: 401)
+            ->toResponse(Request::create('/x'))
+            ->getContent();
+
+        // Native clients parse meta as a map; [] would break object decoders.
+        $this->assertStringContainsString('"meta":{}', $content);
+        $this->assertStringNotContainsString('"meta":[]', $content);
+    }
 }

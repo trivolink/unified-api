@@ -85,4 +85,15 @@ class RedirectTransformationTest extends TestCase
         $response->assertStatus(422);
         $this->assertArrayNotHasKey('version', $response->getData(true));
     }
+
+    public function test_wrapped_error_envelopes_encode_meta_as_an_object(): void
+    {
+        config(['app.debug' => false]);
+
+        $response = $this->get('/boom', ['Accept' => 'application/json']);
+
+        $response->assertStatus(500);
+        $this->assertStringContainsString('"meta":{}', $response->getContent());
+        $this->assertStringNotContainsString('"meta":[]', $response->getContent());
+    }
 }
