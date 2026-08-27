@@ -4,18 +4,19 @@ Everything between "code is done" and "installable from Packagist", in
 execution order. Each section explains what to do, why, and gives the exact
 commands or file contents to use.
 
-> Two decisions are still open and block step 1 and 2: the copyright/author
-> name (and optional email), and whether to ship the CI workflow. Everything
-> else can be executed as-is.
+> Steps 1–4 are **done** (commits `b5642e9` and `01ef859`): license under
+> "SPASEOSSR" (edit `LICENSE` + composer.json `authors` in one line each if
+> you prefer a personal name), CI adopted with a PHP 8.2–8.5 matrix. What
+> remains for the maintainer: step 5 (push + tag) and step 6 (Packagist).
 
 ## Status
 
 | # | Item | Status | Blocks publishing? |
 |---|---|---|---|
-| 1 | `LICENSE` file | missing (`MIT` declared in composer.json only) | yes — legally ambiguous |
-| 2 | composer.json `authors` / `keywords` / `support` | missing | no, but hurts Packagist presence |
-| 3 | `composer.lock` tracked in git | should be untracked | yes for CI — lock references a local path repo |
-| 4 | CI workflow | missing | no, but recommended before first tag |
+| 1 | `LICENSE` file | ✅ done — MIT, SPASEOSSR | — |
+| 2 | composer.json `authors` / `keywords` / `support` | ✅ done | — |
+| 3 | `composer.lock` tracked in git | ✅ untracked + ignored | — |
+| 4 | CI workflow | ✅ `.github/workflows/tests.yml` | — |
 | 5 | Push + tag a release | user does this manually | yes |
 | 6 | Packagist submission + auto-update hook | not done | yes — this is what makes `composer require` work |
 
@@ -133,7 +134,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: ['8.2', '8.3', '8.4']
+        php: ['8.2', '8.3', '8.4', '8.5']
     name: PHP ${{ matrix.php }}
     steps:
       - uses: actions/checkout@v4
