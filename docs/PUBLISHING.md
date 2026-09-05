@@ -4,13 +4,13 @@ Everything between "code is done" and "installable from Packagist", in
 execution order. Each section explains what to do, why, and gives the exact
 commands or file contents to use.
 
-> Steps 1–4 are **done**: license under "TrivoLink" (edit `LICENSE` +
-> composer.json `authors` in one line each if you prefer a personal name),
-> CI adopted with a PHP 8.2–8.5 matrix, and the package is named
-> `trivolink/unified-api` to match the GitHub org (the PHP namespace
-> stays `TrivoLink\UnifiedApi` — package name and namespace are
-> independent). What remains for the maintainer: step 5 (push + tag) and
-> step 6 (Packagist).
+> All steps are **done** — the package is published: `trivolink/unified-api`
+> is live on GitHub and on Packagist (`v1.0.0`, `v1.0.1`). License is under
+> "TrivoLink" (edit `LICENSE` + composer.json `authors` in one line each if
+> you prefer a personal name), CI runs a PHP 8.2–8.5 matrix, and the PHP
+> namespace stays `TrivoLink\UnifiedApi` (package name and namespace are
+> independent). For future releases only the tagging commands in step 5 and
+> the auto-update hook in step 6 remain relevant.
 
 ## Status
 
@@ -20,8 +20,8 @@ commands or file contents to use.
 | 2 | composer.json `authors` / `keywords` / `support` | ✅ done | — |
 | 3 | `composer.lock` tracked in git | ✅ untracked + ignored | — |
 | 4 | CI workflow | ✅ `.github/workflows/tests.yml` | — |
-| 5 | Push + tag a release | user does this manually | yes |
-| 6 | Packagist submission + auto-update hook | not done | yes — this is what makes `composer require` work |
+| 5 | Push + tag a release | ✅ done — `v1.0.0`, `v1.0.1` tagged and pushed | — |
+| 6 | Packagist submission + auto-update hook | ✅ done — live; see the sync note in step 6 | — |
 
 ---
 
@@ -172,9 +172,13 @@ Notes:
 - This is open decision #2 — ship it or skip it. Shipping it enables the
   README badge below.
 
-## 5. Push and tag the first release (manual — yours)
+## 5. Push and tag a release
 
-Prerequisite: create the **`trivolink`** organization on GitHub first
+✅ Done — the `trivolink` org exists and `v1.0.0`/`v1.0.1` are tagged and
+pushed. For future releases only the last two commands below apply (tag,
+push the tag); the rest is the historical recipe.
+
+Background: the **`trivolink`** organization was created on GitHub first
 (<https://github.com/organizations/new>, plan: Free). Naming trail: the
 bare `trivium` vendor is taken on Packagist (claimed by `trivium/api`),
 and the obvious GitHub handles (`trivium`, `triviumlabs`) were unavailable
@@ -197,6 +201,19 @@ Tagging is what lets Packagist pick up an installable version.
 
 ## 6. Publish on Packagist
 
+✅ Done — live at <https://packagist.org/packages/trivolink/unified-api>
+(`v1.0.0`, `v1.0.1`).
+
+> **Sync note (2026-09):** the git history was rewritten (branding rename
+> Trivium → TrivoLink) and the existing tags were force-moved afterwards.
+> Packagist still serves both tags built from the pre-rewrite commits (its
+> cached source refs `f3d74ad`/`957d774` no longer exist on GitHub — that
+> code still says `Trivium`). Re-publishing an existing tag does not
+> refresh it on Packagist; release the next version normally (`v1.0.2`) or
+> press **Update** on the Packagist package page to re-sync.
+
+The steps as they were followed:
+
 1. Create a Packagist account (sign in with GitHub) at
    <https://packagist.org>.
 2. Submit the package: <https://packagist.org/submit> → paste
@@ -210,7 +227,8 @@ After this, `composer require trivolink/unified-api` works worldwide.
 
 ## 7. Optional polish
 
-**README badges** (top of `README.md`, after CI exists):
+**README badges** ✅ in place (centered under the hero banner at the top
+of `README.md`):
 
 ```markdown
 [![Tests](https://github.com/trivolink/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/trivolink/unified-api/actions/workflows/tests.yml)
@@ -218,8 +236,8 @@ After this, `composer require trivolink/unified-api` works worldwide.
 [![License](https://img.shields.io/packagist/l/trivolink/unified-api)](LICENSE)
 ```
 
-**`.gitattributes`** — slim down what `composer require` downloads by
-export-ignoring dev files (create `.gitattributes` in the package root):
+**`.gitattributes`** ✅ in place — slims down what `composer require`
+downloads by export-ignoring dev files:
 
 ```
 /docs export-ignore
@@ -231,13 +249,13 @@ export-ignoring dev files (create `.gitattributes` in the package root):
 
 ## Pre-flight checklist
 
-Run in order, then push:
+First-release audit — all complete:
 
-- [ ] `LICENSE` created, `<COPYRIGHT HOLDER>` replaced
-- [ ] composer.json: `authors`, `keywords`, `support`, `homepage` merged; `composer validate` passes
-- [ ] `composer.lock` untracked and gitignored
-- [ ] CI workflow committed (if adopted)
-- [ ] `.gitattributes` added (optional)
-- [ ] Full suite green locally: `composer test && vendor/bin/pint --test`
-- [ ] Remote added, `main` pushed, release tagged
-- [ ] Packagist submitted + auto-update hook enabled
+- [x] `LICENSE` created, `<COPYRIGHT HOLDER>` replaced
+- [x] composer.json: `authors`, `keywords`, `support`, `homepage` merged; `composer validate` passes
+- [x] `composer.lock` untracked and gitignored
+- [x] CI workflow committed (if adopted)
+- [x] `.gitattributes` added (optional)
+- [x] Full suite green locally: `composer test && vendor/bin/pint --test`
+- [x] Remote added, `main` pushed, release tagged
+- [x] Packagist submitted + auto-update hook enabled
