@@ -1,8 +1,20 @@
+<p align="center">
+  <img src="docs/assets/banner.jpg" alt="TrivoLink Unified API — one Laravel backend serving Inertia SSR HTML for web and a standardized JSON envelope for mobile and desktop clients" width="100%">
+</p>
+
 # trivolink/unified-api
 
-[![Tests](https://github.com/trivolink/unified-api/actions/workflows/tests.yml/badge.svg)](https://github.com/trivolink/unified-api/actions/workflows/tests.yml)
-[![Packagist Version](https://img.shields.io/packagist/v/trivolink/unified-api)](https://packagist.org/packages/trivolink/unified-api)
-[![License](https://img.shields.io/packagist/l/trivolink/unified-api)](LICENSE)
+<p align="center">
+  <a href="https://github.com/trivolink/unified-api/actions/workflows/tests.yml">
+    <img src="https://github.com/trivolink/unified-api/actions/workflows/tests.yml/badge.svg" alt="Tests">
+  </a>
+  <a href="https://packagist.org/packages/trivolink/unified-api">
+    <img src="https://img.shields.io/packagist/v/trivolink/unified-api" alt="Packagist Version">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/packagist/l/trivolink/unified-api" alt="License">
+  </a>
+</p>
 
 One Laravel backend, three clients. Web keeps Inertia SSR HTML (SPA +
 SEO); mobile and desktop apps receive a standardized JSON envelope —
